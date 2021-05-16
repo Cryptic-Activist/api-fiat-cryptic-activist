@@ -7,6 +7,7 @@ export async function authenticateUser(
   next: NextFunction,
 ): Promise<Response> {
   try {
+    console.log('req.headers.authorization:', req.headers.authorization);
     const response = await fetch(
       `${process.env.USER_API_ENDPOINT}/user/authorization/authorize`,
       {
@@ -22,6 +23,8 @@ export async function authenticateUser(
     );
 
     const data = await response.json();
+
+    console.log('data:', data);
 
     if (data.status_code === 200) {
       next();

@@ -9,8 +9,6 @@ export async function index(req: Request, res: Response): Promise<Response> {
   try {
     const fiats = await crypticbase.getFiats(null);
 
-    console.log('fiats:', fiats);
-
     return res.status(200).send({
       status_code: 200,
       results: fiats,

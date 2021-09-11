@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import fetch from 'node-fetch';
+import { getAuth } from '@services/api';
 
 export async function authenticateUser(
   req: Request,
@@ -7,24 +7,7 @@ export async function authenticateUser(
   next: NextFunction,
 ): Promise<Response> {
   try {
-    console.log('req.headers.authorization:', req.headers.authorization);
-    const response = await fetch(
-      `${process.env.USER_API_ENDPOINT}/user/authorization/authorize`,
-      {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: req.headers.authorization,
-        },
-      },
-    );
-
-    const data = await response.json();
-
-    console.log('data:', data);
+    const data = await getAuth(process.env.USER_API_ENDPOINT, req.headers.authorization);
 
     if (data.status_code === 200) {
       next();
@@ -39,7 +22,7 @@ export async function authenticateUser(
     return res.status(401).send({
       status_code: 401,
       results: {},
-      errors: [err],
+      errors: [err.message],
     });
   }
 }

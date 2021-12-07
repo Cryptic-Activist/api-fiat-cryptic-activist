@@ -12,7 +12,11 @@ export async function getFiatController(
 
     return res.status(200).send({
       status_code: 200,
-      results: fiat,
+      results: {
+        id: fiat.id,
+        symbol: fiat.symbol,
+        name: fiat.name,
+      },
       errors: [],
     });
   } catch (err) {

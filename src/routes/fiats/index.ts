@@ -13,6 +13,7 @@ router.get('', index);
 
 router.post('/create', authenticateUser, createFiatController);
 
-router.post('/json/create', authenticateUser, createFiatsJSON);
+// router.post('/json/create', authenticateUser, createFiatsJSON);
+router.post('/json/create', createFiatsJSON);
 
 export default router;

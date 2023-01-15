@@ -2901,7 +2901,7 @@ cross-spawn@^7.0.0, cross-spawn@^7.0.1, cross-spawn@^7.0.2:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-cryptic-base@^1.9.0, cryptic-base@^1.9.2:
+cryptic-base@^1.9.0:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/cryptic-base/-/cryptic-base-1.9.2.tgz#38415693a271e91043c0b10f699967ea62605801"
   integrity sha512-vkwzp0GjRSXfCOABR2ZpfHqdRxoTBVnkxDSaUfbIT69VGxDyphqp9UOBj07X7In+FHaGW2WuLWAUPvJuiEJ/Cw==

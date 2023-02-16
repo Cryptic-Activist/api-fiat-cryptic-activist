@@ -1,14 +1,12 @@
-import { Request, Response } from 'express';
 import { getFiat } from 'base-ca';
+import { Request, Response } from 'express';
 
-export async function getFiatController(
-	req: Request,
-	res: Response,
-): Promise<Response> {
+export const getFiatController = async (req: Request, res: Response) => {
 	try {
-		const { fiatSymbol } = req.query;
-
-		const fiat = await getFiat({ symbol: fiatSymbol as string });
+		const { query } = req;
+		const { fiatSymbol } = query;
+		// @ts-ignore
+		const fiat = await getFiat({ symbol: fiatSymbol });
 
 		return res.status(200).send({
 			status_code: 200,
@@ -17,13 +15,11 @@ export async function getFiatController(
 				symbol: fiat.symbol,
 				name: fiat.name,
 			},
-			errors: [],
 		});
 	} catch (err) {
 		return res.status(500).send({
 			status_code: 500,
-			results: {},
 			errors: [err.message],
 		});
 	}
-}
+};

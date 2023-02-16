@@ -1,30 +1,31 @@
+import { createFiat, getFiat, getFiats } from 'base-ca';
 import { Request, Response } from 'express';
-import { getFiats, createFiat, getFiat } from 'base-ca';
 
 import fiatsJson from '../../../fiats.json';
 
-export async function index(req: Request, res: Response): Promise<Response> {
+export const index = async (
+	_req: Request,
+	res: Response,
+): Promise<Response> => {
 	try {
 		const fiats = await getFiats();
 
 		return res.status(200).send({
 			status_code: 200,
 			results: fiats,
-			errors: [],
 		});
 	} catch (err) {
 		return res.status(500).send({
 			status_code: 500,
-			results: [],
 			errors: [err.message],
 		});
 	}
-}
+};
 
-export async function createFiatController(
+export const createFiatController = async (
 	req: Request,
 	res: Response,
-): Promise<Response> {
+): Promise<Response> => {
 	try {
 		const { name, symbol } = req.body;
 
@@ -36,21 +37,19 @@ export async function createFiatController(
 		return res.status(200).send({
 			status_code: 200,
 			results: newFiat,
-			errors: [],
 		});
 	} catch (err) {
 		return res.status(500).send({
 			status_code: 500,
-			results: {},
 			errors: [err.message],
 		});
 	}
-}
+};
 
-export async function getFiatController(
+export const getFiatController = async (
 	req: Request,
 	res: Response,
-): Promise<Response> {
+): Promise<Response> => {
 	try {
 		const { name, symbol } = req.params;
 
@@ -62,21 +61,19 @@ export async function getFiatController(
 		return res.status(200).send({
 			status_code: 200,
 			results: fiat,
-			errors: [],
 		});
 	} catch (err) {
 		return res.status(500).send({
 			status_code: 500,
-			results: {},
 			errors: [err.message],
 		});
 	}
-}
+};
 
-export async function createFiatsJSON(
-	req: Request,
+export const createFiatsJSON = async (
+	_req: Request,
 	res: Response,
-): Promise<Response> {
+): Promise<Response> => {
 	try {
 		fiatsJson.forEach(async (fiat) => {
 			await createFiat({
@@ -87,14 +84,11 @@ export async function createFiatsJSON(
 
 		return res.status(200).send({
 			status_code: 200,
-			results: {},
-			errors: [],
 		});
 	} catch (err) {
 		return res.status(500).send({
 			status_code: 500,
-			results: [],
 			errors: [err.message],
 		});
 	}
-}
+};

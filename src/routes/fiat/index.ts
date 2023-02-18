@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { getFiatController } from '@controllers/fiat';
+import { getFiatController } from '../../controllers/fiat';
 
 const router = Router();
 

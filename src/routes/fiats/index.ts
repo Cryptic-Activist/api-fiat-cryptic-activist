@@ -4,8 +4,8 @@ import {
 	createFiatController,
 	createFiatsJSON,
 	index,
-} from '@controllers/fiats';
-import { authenticateUser } from '@middlewares/authorization';
+} from '../../controllers/fiats';
+import { authenticateUser } from '../../middlewares/authorization';
 
 const router = Router();
 

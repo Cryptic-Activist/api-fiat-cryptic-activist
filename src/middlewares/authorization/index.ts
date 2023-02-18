@@ -1,5 +1,5 @@
-import { getAuth } from '@services/api';
 import { NextFunction, Request, Response } from 'express';
+import { getAuth } from '../../services/api';
 import { AuthenticateUser } from './zod';
 
 export const authenticateUser = async (

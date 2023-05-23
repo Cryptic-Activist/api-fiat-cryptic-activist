@@ -8,7 +8,7 @@
 		"test:w": "jest --watch",
 		"build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
 		"start": "node dist/src/server.js",
-		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/server.js\"",
+		"dev": "tsx watch src/server.ts",
 		"refresh": "rm -rf ./node_modules ./yarn.lock ./yarn-error.log ./dist && yarn install"
 	},
 	"husky": {
@@ -69,6 +69,7 @@
 		"ts-jest": "^26.4.4",
 		"ts-node-dev": "^1.1.1",
 		"tsconfig-paths": "^3.9.0",
+		"tsx": "^3.12.7",
 		"typescript": "^4.1.3"
 	},
 	"dependencies": {

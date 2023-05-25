@@ -15,6 +15,7 @@ export const index = async (
 			results: fiats,
 		});
 	} catch (err) {
+		console.log(err);
 		return res.status(500).send({
 			status_code: 500,
 			errors: [err.message],
